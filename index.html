@@ -1,99 +1,16 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Site com 1 TXT anexado</title>
-  <style>
-    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
-    body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0f172a;color:#e6eef8;margin:0}
-    .card{width:min(900px,96vw);background:linear-gradient(180deg,#0b1220, #0f172a);border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,.6)}
-    h1{margin:0 0 12px;font-size:20px}
-    p{margin:0 0 14px;color:#9fb0d0}
-    textarea{width:100%;height:260px;border-radius:8px;padding:12px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);color:inherit;resize:vertical}
-    .row{display:flex;gap:10px;align-items:center;margin-top:12px}
-    button{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
-    .btn-primary{background:#2563eb;color:white}
-    .btn-secondary{background:transparent;color:#9fb0d0;border:1px solid rgba(255,255,255,.04)}
-    .meta{font-size:13px;color:#84a0c4;margin-top:8px}
-    footer{margin-top:14px;font-size:12px;color:#6e8bb0}
-  </style>
+  <meta charset="utf-8">
+  <title>TXT anexado</title>
 </head>
-<body>
-  <div class="card">
-    <h1>ununun</h1>
-    <p>ununun</p>
+<body style="background:#fff; color:#000; font-family:sans-serif; padding:20px;">
+  <h1>Arquivo TXT</h1>
+  <p><a href="pbzbhzqvnqvffrNZ.txt" download>Baixar pbzbhzqvnqvffrNZ.txt</a></p>
 
-    <label for="txt" style="font-size:13px;color:#9fb0d0">Conteúdo do arquivo .txt (edite como quiser):</label>
-    <textarea id="txt">Szkudy sdmgzl rd ozrrzcn bdmsdmzr cd zmnr. Mãn rdh. ZL udl rd chudqshmcn iá gá
-zkftl sdlon, zbdkdqzmcn d zsqzrzmcn n ldt rdmshcn czr gnqzr. Unt chydq z ozkzuqz
-“zfnqz”. Zfnqz. Kdudh cdy ldrdr ozqz chydq hrrn. Mãn rdh. Zbgn ptd rd ozrrzqzl bdmsdmzr cd
-zmnr.</textarea>
-
-    <div class="row">
-      <button id="generate" class="btn-primary">Gerar/Atualizar TXT</button>
-      <a id="downloadLink" class="btn-secondary" download="pbzbhzqvnqvffrNZ.txt" href="#">Baixar arquivo .txt</a>
-      <button id="copyText" class="btn-secondary">Copiar conteúdo</button>
-    </div>
-
-    <div class="meta">Nome do arquivo: <strong id="filename">pbzbhzqvnqvffrNZ.txt</strong> · Tamanho: <span id="size">0 B</span></div>
-    <footer>Para usar: salve este arquivo como <code>index.html</code> e abra no navegador. O site gera um único .txt para download.</footer>
-  </div>
-
-  <script>
-    const textarea = document.getElementById('txt');
-    const generateBtn = document.getElementById('generate');
-    const downloadLink = document.getElementById('downloadLink');
-    const sizeEl = document.getElementById('size');
-    const filenameEl = document.getElementById('filename');
-    const copyBtn = document.getElementById('copyText');
-
-    let currentBlobUrl = null;
-    let filename = 'pbzbhzqvnqvffrNZ.txt';
-
-    function updateDownload() {
-      const text = textarea.value || '';
-      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-      if (currentBlobUrl) URL.revokeObjectURL(currentBlobUrl);
-      currentBlobUrl = URL.createObjectURL(blob);
-      downloadLink.href = currentBlobUrl;
-      downloadLink.download = filename;
-      filenameEl.textContent = filename;
-      sizeEl.textContent = formatBytes(blob.size);
-    }
-
-    function formatBytes(bytes) {
-      if (bytes === 0) return '0 B';
-      const k = 1024;
-      const sizes = ['B', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
-
-    generateBtn.addEventListener('click', () => {
-      updateDownload();
-      // pequena animação de feedback
-      generateBtn.disabled = true;
-      generateBtn.textContent = 'Gerando...';
-      setTimeout(()=>{ generateBtn.disabled = false; generateBtn.textContent = 'Gerar/Atualizar TXT' }, 600);
-    });
-
-    copyBtn.addEventListener('click', async ()=>{
-      try{
-        await navigator.clipboard.writeText(textarea.value);
-        copyBtn.textContent = 'Copiado!';
-        setTimeout(()=>copyBtn.textContent = 'Copiar conteúdo',800);
-      }catch(e){
-        copyBtn.textContent = 'Falhou';
-        setTimeout(()=>copyBtn.textContent = 'Copiar conteúdo',800);
-      }
-    });
-
-    // gerar pela primeira vez ao carregar
-    updateDownload();
-
-    // limpar URL quando fechar/reciclar
-    window.addEventListener('unload', ()=>{ if(currentBlobUrl) URL.revokeObjectURL(currentBlobUrl); });
-  </script>
+  <!-- Exibe o conteúdo do TXT direto na página -->
+  <pre style="border:1px solid #ccc; padding:10px; max-width:600px; white-space:pre-wrap;">
+  </pre>
 </body>
 </html>
+
